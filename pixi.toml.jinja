@@ -1,0 +1,45 @@
+[project]
+authors = ["{{ author_name }} <{{ author_email }}>"]
+channels = ["conda-forge"]
+name = "{{ project_name | replace('_', '-') }}"
+platforms = ["osx-arm64", "linux-64"]
+version = "0.1.0"
+
+[tasks]
+install-editable = "pixi run pip install --no-build-isolation --editable ."
+
+[dependencies]
+python = ">= {{ python_version }}"
+
+
+[feature.test.dependencies]
+pytest = "*"
+pytest-cov = "*"
+
+[feature.test.tasks]
+test = "pixi run -e test pytest"
+
+[feature.build.dependencies]
+python-build = "*"
+pip = "*"
+hatchling = "*"
+hatch-vcs = "*"
+
+[feature.lint.dependencies]
+pre-commit = "*"
+pre-commit-hooks = "*"
+ruff = "*"
+mypy = "*"
+docformatter = "*"
+prettier = "*"
+typos = "*"
+
+[feature.lint.tasks]
+pre-commit-install = "pre-commit install"
+pre-commit-run = "pre-commit run -a"
+
+[environments]
+default = { features = ["test", "build"], solve-group = "default" }
+test = { features = ["test"], solve-group = "default" }
+build = { features = ["build"], solve-group = "default" }
+lint = { features = ["lint", "build"], no-default-feature = true }

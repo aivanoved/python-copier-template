@@ -1,0 +1,21 @@
+author_name:
+  type: str
+  default: "Alexander Ivanov"
+
+author_email:
+  type: str
+  default: "54221777+aivanoved@users.noreply.github.com"
+
+project_name:
+  type: str
+
+python_version:
+  type: str
+  default: "3.13"
+
+project_upstream_url:
+  type: str
+  default: "https://github.com/aivanoved/{{ project_name | replace('_', '-') }}"
+
+exclude:
+  - README.md
