@@ -6,6 +6,10 @@ author_email:
   type: str
   default: "54221777+aivanoved@users.noreply.github.com"
 
+code_owner:
+  type: str
+  default: "@aivanoved"
+
 project_name:
   type: str
 
