@@ -7,7 +7,7 @@ authors = [
     { name = "{{ author_name }}", email = "{{ author_email }}" }
 ]
 name = "{{ project_name | replace('_', '-') }}"
-requires-python = ">= {{ python_version }}"
+requires-python = ">={{ python_version }}"
 dynamic = ["version"]
 readme = "README.md"
 classifiers = [
