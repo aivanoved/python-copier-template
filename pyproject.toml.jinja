@@ -23,7 +23,7 @@ repository = "{{ project_upstream_url }}"
 source = "vcs"
 
 [tool.hatch.build.targets.wheel]
-packages = ["{{ project_name }}"]
+packages = ["{{ project_name | replace('-', '_') }}"]
 
 [tool.pytest.ini_options]
 addopts = "--import-mode=importlib"
